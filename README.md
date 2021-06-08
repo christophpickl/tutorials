@@ -4,7 +4,8 @@ just some quick tutorials for some libs/frameworks
 
 ## ideas
 
-* [ ] ktor
+* [ ] mockk
 * [ ] koin
 * [ ] kotest
+* [ ] ktor
 * [ ] arrow
