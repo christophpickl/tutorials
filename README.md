@@ -9,3 +9,4 @@ just some quick tutorials for some libs/frameworks
 * [ ] kotest
 * [ ] ktor
 * [ ] arrow
+* [ ] flyway
