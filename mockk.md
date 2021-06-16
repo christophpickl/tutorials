@@ -14,13 +14,21 @@ verify { foo.action(any()) }
 special cases:
 
 ```kotlin
-// function returning unit
+// function returning unit, simply run it
 every { foo.action() } just Runs
 ```
 
 # Capture
 
-``
+Capture values:
+
+```kotlin
+val fooSlot = slot<Foo>()
+every { service.action(capture(fooSlot)) } returns something
+// ...
+fooSlot.captured.member shouldBe "bar"
+```
+
 Lambdas:
 
 ```kotlin
