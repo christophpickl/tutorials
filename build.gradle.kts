@@ -5,6 +5,7 @@ repositories {
 plugins {
     kotlin("jvm") version Versions.Plugins.kotlin
     kotlin("kapt") version Versions.Plugins.kotlin
+    // $ ./gradlew dependencyUpdates
     id("com.github.ben-manes.versions") version Versions.Plugins.versions
 }
 

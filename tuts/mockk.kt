@@ -35,12 +35,12 @@ fun `simple setup`() {
 fun `capturing arguments`() {
     data class Argument(val value: String)
     class Service {
-        fun action(arg: Argument) = 21
+        fun action(arg: Argument) = "Hello $arg"
     }
 
     val argSlot = slot<Argument>()
     val mockedService = mockk<Service>()
-    every { mockedService.action(capture(argSlot)) } returns 42
+    every { mockedService.action(capture(argSlot)) } returns "mocked"
 
     mockedService.action(Argument("secret"))
 

@@ -7,9 +7,9 @@ object Dependencies {
     object Arrow {
         internal val groupId = "io.arrow-kt"
         private fun arrow(artifactId: String, version: String = Versions.arrow) = "$groupId:$artifactId:$version"
-        val core = arrow("core")
-        val optics = arrow("optics")
-        val syntax = arrow("syntax", "0.12.1")
+        val core = arrow("arrow-core")
+        val optics = arrow("arrow-optics")
+        val syntax = arrow("arrow-syntax", "0.12.1")
         val fxCoroutines = arrow("arrow-fx-coroutines")
 
         /** use with kapt(), rather implementation(); requires kapt plugin applied */
