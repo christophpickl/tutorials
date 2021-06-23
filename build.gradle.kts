@@ -1,3 +1,6 @@
+import com.github.cpickl.tutorials.Dependencies
+import com.github.cpickl.tutorials.Versions
+
 repositories {
     mavenCentral()
 }
