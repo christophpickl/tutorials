@@ -24,7 +24,7 @@
 * `docker container stop CONTAINER_ID` ... stop single container
 * `docker container stop $(docker ps -a -q)` OR: `docker ps -q | xargs docker stop` ... stop all containers
 * `docker rm $(docker ps -q -a)` OR: `docker ps -a -q | xargs docker rm` ... stop containers (maybe owning a lock)
-  * seful when getting a “image is being used by stopped container”
+    * seful when getting a “image is being used by stopped container”
 
 ## Volume Handling
 
@@ -37,12 +37,12 @@
 ## Repository
 
 * NOTE: defining image name "nginx"
-  * implicitly assumes "nginx/nginx" (user-account / image-repository)
-  * implicitly assumes "docker.io/nginx/nginx" (default registry, like maven-central)
+    * implicitly assumes "nginx/nginx" (user-account / image-repository)
+    * implicitly assumes "docker.io/nginx/nginx" (default registry, like maven-central)
 * `docker login private-registry.io` ... access a non-default registry
-  * `docker run private-registry.io/organization/image`
-  * `docker image tag my_image private-registry.io/my_image`
-  * `docker push/pull private-registry.io/my_image`
+    * `docker run private-registry.io/organization/image`
+    * `docker image tag my_image private-registry.io/my_image`
+    * `docker push/pull private-registry.io/my_image`
 
 ## Misc
 
@@ -64,9 +64,9 @@
 * `docker-compose down`
 * `docker-compose --env-file ./path/to/env.dev up`
 * multi container setup with old fashioned __links__:
-  * `docker run -d --name=db postgres` ... `-d` = in background
-  * `docker run -d --name=my_app --link db:db myapp:latest` ... `-link db:db` = host resolution
-  * do a `cat /etc/hosts` in running container to see DNS entry -nice :)
-  * BUT: links are deprecated => use __docker swarm__ instead! (or kubernetes)
-  * NOTE: `link 80` ... same as: `link db:db`
+    * `docker run -d --name=db postgres` ... `-d` = in background
+    * `docker run -d --name=my_app --link db:db myapp:latest` ... `-link db:db` = host resolution
+    * do a `cat /etc/hosts` in running container to see DNS entry -nice :)
+    * BUT: links are deprecated => use __docker swarm__ instead! (or kubernetes)
+    * NOTE: `link 80` ... same as: `link db:db`
 * create separate networks (frontend VS backend) in docker compose

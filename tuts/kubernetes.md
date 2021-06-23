@@ -7,16 +7,16 @@ available:
 1. mesos (apache; difficult and advanced)
 
 * terminology
-  * nodes ... single host (physical or virtualized)
-  * cluster ... set of nodes
-  * master ... controlling the nodes
+    * nodes ... single host (physical or virtualized)
+    * cluster ... set of nodes
+    * master ... controlling the nodes
 * components:
-  * API server (access to kubernetes; e.g. via CLI)
-  * etcd (key-value-store)
-  * kubelet (each node’s agent in the cluster, checking containers running on node)
-  * container runtime (well... runs containers; e.g.: docker)
-  * controller (the “brain”, decides rerunning crashed nodes)
-  * scheduler (work distribution)
+    * API server (access to kubernetes; e.g. via CLI)
+    * etcd (key-value-store)
+    * kubelet (each node’s agent in the cluster, checking containers running on node)
+    * container runtime (well... runs containers; e.g.: docker)
+    * controller (the “brain”, decides rerunning crashed nodes)
+    * scheduler (work distribution)
 
 # commands
 

@@ -6,7 +6,8 @@ just some quick tutorials for some libs/frameworks
 
 * [ ] mockk
 * [ ] koin
+* [ ] moshi
 * [ ] kotest
-* [ ] ktor
-* [ ] arrow
-* [ ] flyway
+* [ ] ktor (+ kodein/koin in test setup)
+* [ ] arrow (either, validated, zip/traverse)
+* [ ] flyway (+ gradle plugin)
