@@ -1,15 +1,14 @@
 import com.github.cpickl.tutorials.Dependencies
-import com.github.cpickl.tutorials.Versions
 
 repositories {
     mavenCentral()
 }
 
 plugins {
-    kotlin("jvm") version Versions.Plugins.kotlin
-    kotlin("kapt") version Versions.Plugins.kotlin
+    kotlin("jvm") version "1.5.10"//Versions.Plugins.kotlin
+    kotlin("kapt") version "1.5.10"//Versions.Plugins.kotlin
     // $ ./gradlew dependencyUpdates
-    id("com.github.ben-manes.versions") version Versions.Plugins.versions
+    id("com.github.ben-manes.versions") version "0.39.0" //Versions.Plugins.versions
 }
 
 dependencies {
@@ -20,6 +19,8 @@ dependencies {
     implementation(Dependencies.Arrow.core)
     implementation(Dependencies.Arrow.optics)
     implementation(Dependencies.Arrow.syntax)
+    implementation(Dependencies.Arrow.fx)
+    implementation(Dependencies.Arrow.annotations)
     kapt(Dependencies.Arrow.meta)
 
     testImplementation(Dependencies.Kotest.junit5)

@@ -11,7 +11,9 @@ object Dependencies {
         private fun arrow(artifactId: String, version: String = Versions.arrow) = "$groupId:$artifactId:$version"
         val core = arrow("arrow-core")
         val optics = arrow("arrow-optics")
-        val syntax = arrow("arrow-syntax", "0.12.1")
+        val syntax = arrow("arrow-syntax", Versions.arrowSecondary)
+        val fx = arrow("arrow-fx", Versions.arrowSecondary)
+        val annotations = arrow("arrow-annotations", Versions.arrowSecondary)
         val fxCoroutines = arrow("arrow-fx-coroutines")
 
         /** use with kapt(), rather implementation(); requires kapt plugin applied */

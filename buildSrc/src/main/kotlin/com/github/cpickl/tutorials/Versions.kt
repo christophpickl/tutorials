@@ -1,7 +1,9 @@
 package com.github.cpickl.tutorials
 
 object Versions {
-    const val arrow = "0.13.2"
+    //    const val arrow = "0.13.2" // missing arrow.Kind for IO
+    const val arrowSecondary = "0.12.1"
+    const val arrow = arrowSecondary
     const val kotest = "4.6.0"
     const val kotestArrowAssertions = "4.4.3"
     const val kotlinLogging = "2.0.8"
