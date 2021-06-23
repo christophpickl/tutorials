@@ -1,3 +1,5 @@
+package com.github.cpickl.tutorials
+
 import org.gradle.api.artifacts.ModuleDependency
 import org.gradle.kotlin.dsl.exclude
 

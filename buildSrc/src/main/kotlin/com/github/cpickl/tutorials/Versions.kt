@@ -1,3 +1,5 @@
+package com.github.cpickl.tutorials
+
 object Versions {
     const val arrow = "0.13.2"
     const val kotest = "4.6.0"
