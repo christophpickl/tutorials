@@ -90,6 +90,8 @@ fun `effects io either`() {
     fun fetchResult(): Either<Bad, Good> = Good("fetched result").right()
     fun Good.process(): Either<Bad, Good2> = Good2("yet again good").right()
 
+    // IO {} ... single IO
+    // IO.fx {} ... multiple IOs
     fun ioProgram(): IO<Either<Bad, Good2>> = IO.fx {
         val res = IO.effect { fetchResult() }.bind()
         res.fold({ IO.just(it.left()) }, { IO.effect { it.process() } }).bind()
