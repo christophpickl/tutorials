@@ -13,12 +13,12 @@ import mu.KLogger
 // URL: https://mockk.io
 
 fun main() {
-//    `simple setup`()
+    `mock calls`()
 //    `capturing arguments`()
-    `capturing lambda arguments`()
+//    `capturing lambda arguments`()
 }
 
-fun `simple setup`() {
+fun `mock calls`() {
     class Service {
         fun greet(name: String) = "Hello $name!"
         fun unitReturning() {}
@@ -27,11 +27,14 @@ fun `simple setup`() {
     val mockedService = mockk<Service>()
     every { mockedService.greet("argument") } returns "mockedResult"
     every { mockedService.unitReturning() } just Runs // or make the mock more relaxed
-
     val result = mockedService.greet("argument")
-
     verify { mockedService.greet(any()) }
     result shouldBe "mockedResult"
+
+    val repeatedAnswer = mockk<Service>()
+    every { repeatedAnswer.greet(any()) } returns "a" andThen "b" // ... use `andThen`
+    repeatedAnswer.greet("ignore") shouldBe "a"
+    repeatedAnswer.greet("ignore") shouldBe "b"
 }
 
 fun `capturing arguments`() {
