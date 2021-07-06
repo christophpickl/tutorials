@@ -1,14 +1,17 @@
 import com.github.cpickl.tutorials.Dependencies
+import com.github.cpickl.tutorials.IntegrationTestTask
 
 repositories {
     mavenCentral()
 }
 
 plugins {
-    kotlin("jvm") version "1.5.10"//Versions.Plugins.kotlin
-    kotlin("kapt") version "1.5.10"//Versions.Plugins.kotlin
+    kotlin("jvm") version com.github.cpickl.tutorials.Versions.Plugins.kotlin
+    kotlin("kapt") version com.github.cpickl.tutorials.Versions.Plugins.kotlin
+    // ./gradlew kotest ... https://github.com/kotest/kotest-gradle-plugin
+    id("io.kotest") version com.github.cpickl.tutorials.Versions.Plugins.kotest
     // $ ./gradlew dependencyUpdates
-    id("com.github.ben-manes.versions") version "0.39.0" //Versions.Plugins.versions
+    id("com.github.ben-manes.versions") version com.github.cpickl.tutorials.Versions.Plugins.versions
 }
 
 dependencies {
@@ -23,6 +26,7 @@ dependencies {
     implementation(Dependencies.Arrow.annotations)
     kapt(Dependencies.Arrow.meta)
 
+    testImplementation(Dependencies.Kotest.frameworkEngineJvm)
     testImplementation(Dependencies.Kotest.junit5)
     testImplementation(Dependencies.Kotest.assertions)
     testImplementation(Dependencies.Kotest.assertionsArrow)
@@ -31,6 +35,27 @@ dependencies {
 
 kotlin.sourceSets["test"].kotlin.srcDirs("tuts")
 
-val test by tasks.getting(Test::class) {
-    useJUnitPlatform { }
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
+//val test by tasks.getting(Test::class) {
+//    useJUnitPlatform { }
+//}
+
+// ./gradlew test -Ptests=all
+tasks.withType<io.kotest.gradle.Kotest> {
+    if(findProperty("tests") == "all") {
+        println("Running all tests.")
+    } else {
+        println("Running only unit tests. Run `./gradlew test -Ptests=all` to also run integration tests.")
+        setTags("!Integration")
+    }
+
+}
+
+// ./gradlew -q itest
+tasks.register<IntegrationTestTask>("itest") {
+    tagExpression.set("Unit & Database & !Linux")
+}
+
+//the<IntegrationTestTask>().tagExpression.set("Unit & Database & !Linux")

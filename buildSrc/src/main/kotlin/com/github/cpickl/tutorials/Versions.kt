@@ -15,6 +15,7 @@ object Versions {
     object Plugins {
         const val jacoco = "0.8.7"
         const val kotlin = "1.5.10"
+        const val kotest = "0.3.8"
         const val versions = "0.39.0"
     }
 }

@@ -26,6 +26,7 @@ object Dependencies {
         private fun kotest(artifactId: String, version: String = Versions.kotest) = "io.kotest:$artifactId:$version"
         val junit5 = kotest("kotest-runner-junit5-jvm")
         val assertions = kotest("kotest-assertions-core-jvm")
+        val frameworkEngineJvm = kotest("kotest-framework-engine-jvm")
 
         /** dont' forget to exclude provided arrow */
         val assertionsArrow = kotest("kotest-assertions-arrow-jvm", Versions.kotestArrowAssertions)
