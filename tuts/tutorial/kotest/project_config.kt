@@ -18,6 +18,6 @@ object MyProjectConfig : AbstractProjectConfig() {
         println("MyProjectConfig.afterAll")
     }
 
-    override fun listeners() = listOf(MyTestListener)
+//    override fun listeners() = listOf(MyTestListener)
 
 }

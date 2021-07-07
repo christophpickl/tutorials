@@ -1,9 +1,7 @@
 package tutorial.kotest
 
-import io.kotest.core.listeners.ProjectListener
 import io.kotest.core.listeners.TestListener
 import io.kotest.core.spec.AfterEach
-import io.kotest.core.spec.AutoScan
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.core.test.TestCase
 
@@ -51,16 +49,6 @@ class ReuseHookTest : StringSpec({
         println("test 1")
     }
 })
-
-@AutoScan // to automatically be picked up by kotest
-object MyProjectListener : ProjectListener {
-    override suspend fun beforeProject() {
-        println("MyProjectListener.beforeProject")
-    }
-    override suspend fun afterProject() {
-        println("MyProjectListener.afterProject")
-    }
-}
 
 object MyTestListener : TestListener {
     override suspend fun beforeEach(testCase: TestCase) {
