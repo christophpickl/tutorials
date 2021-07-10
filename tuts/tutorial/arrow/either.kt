@@ -77,3 +77,31 @@ fun `catch exceptions`() {
 }
 
 // </editor-fold>
+
+fun `right() or Either-right()`() {
+    /*
+    There is a slight difference in both, this is due to how type inference works.
+
+Either.Right is the constructor and it results in Either.Right<A>, whilst right() is a function that results in Either<Nothing, A>.
+
+For example:
+
+listOf(1, 2, 3).fold(Either.Right(0))  { acc, i ->
+  acc.map { it + i }
+}
+
+This will not compile since fold infers Either.Right<Int> from the initial value, and thus it expects Either.Right<Int> to be returned inside the lambda but we return Either<Nothing, Int>.
+
+This is solved by using:
+
+listOf(1, 2, 3).fold(0.right())  { acc, i ->
+  acc.map { it + i }
+}
+
+So in general I always use Either.Right, but in an occasional odd case like demonstrated above I use right().
+
+TL;DR right() helps with type inferrence, where using regular constructors break inference.
+     */
+}
+
+// more advanced shit with EitherEffect: https://gist.github.com/nomisRev/8f10a30f4f087d24a006a0b6093b4c8f

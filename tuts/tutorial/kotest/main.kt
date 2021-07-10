@@ -1,5 +1,8 @@
 package tutorial.kotest
 
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.DescribeSpec
+
 /*
 it is a...
 1. test framework => https://kotest.io/docs/framework/framework.html
@@ -8,3 +11,14 @@ it is a...
 */
 
 // TODO configuration (threads & co)
+class MainKotestTest : DescribeSpec() {
+    init {
+        describe("main") {
+            it("throw") {
+                shouldThrow<Exception> {
+                    throw Exception("")
+                }
+            }
+        }
+    }
+}

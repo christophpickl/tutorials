@@ -1,5 +1,6 @@
 import com.github.cpickl.tutorials.Dependencies
 import com.github.cpickl.tutorials.IntegrationTestTask
+import com.github.cpickl.tutorials.excludeArrow
 
 repositories {
     mavenCentral()
@@ -24,12 +25,19 @@ dependencies {
     implementation(Dependencies.Arrow.syntax)
     implementation(Dependencies.Arrow.fx)
     implementation(Dependencies.Arrow.annotations)
+    implementation(Dependencies.Ktor.serverNetty)
+    implementation(Dependencies.Ktor.jackson)
+    implementation(Dependencies.Koin.core)
+    implementation(Dependencies.Koin.ktor)
+    implementation(Dependencies.Koin.loggerSlf4j)
     kapt(Dependencies.Arrow.meta)
 
+    testImplementation(Dependencies.Ktor.serverTest) { excludeArrow() }
     testImplementation(Dependencies.Kotest.frameworkEngineJvm)
     testImplementation(Dependencies.Kotest.junit5)
     testImplementation(Dependencies.Kotest.assertions)
     testImplementation(Dependencies.Kotest.assertionsArrow)
+    testImplementation(Dependencies.Koin.test)
     testImplementation(Dependencies.mockk)
 }
 
@@ -44,7 +52,7 @@ tasks.withType<Test> {
 
 // ./gradlew test -Ptests=all
 tasks.withType<io.kotest.gradle.Kotest> {
-    if(findProperty("tests") == "all") {
+    if (findProperty("tests") == "all") {
         println("Running all tests.")
     } else {
         println("Running only unit tests. Run `./gradlew test -Ptests=all` to also run integration tests.")
