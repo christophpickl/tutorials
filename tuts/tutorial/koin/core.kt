@@ -1,8 +1,10 @@
 package tutorial.koin
 
+import org.koin.core.Koin
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import org.koin.dsl.bind
+import org.koin.dsl.koinApplication
 import org.koin.dsl.module
 import org.koin.dsl.single
 import org.koin.environmentProperties
@@ -54,15 +56,16 @@ val myModule = module(createdAtStart = true) {
 }
 
 fun main() {
-    val koin = startKoin { // same as koinApplication {} + register it into koin's GlobalContext
+    val koin: Koin = koinApplication {
+//    val koin = startKoin { // same as koinApplication {} + register it into koin's GlobalContext
 //        logger(PrintLogger(level = Level.DEBUG))
+        allowOverride(false)
         logger(SLF4JLogger(level = Level.DEBUG))
         properties(mapOf("propertyKey" to "specific"))
 //        fileProperties("fileName.properties")
         environmentProperties() // load properties from OS environment into Koin container
         modules(myModule)
-    }
-
-    val service by inject<SomeService>(SomeService::class.java)
+    }.koin
+    val service = koin.get<SomeService>()
     service.greetAll()
 }
