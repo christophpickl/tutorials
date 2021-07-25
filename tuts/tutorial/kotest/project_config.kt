@@ -7,6 +7,8 @@ import io.kotest.core.config.AbstractProjectConfig
 
 object MyProjectConfig : AbstractProjectConfig() {
 
+    override val globalAssertSoftly = true
+
     @ExperimentalKotest
     override val concurrentTests = 3
     override val failOnIgnoredTests = true

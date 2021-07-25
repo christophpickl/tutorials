@@ -5,7 +5,7 @@ object Versions {
     const val arrowSecondary = "0.12.1"
     const val arrow = arrowSecondary
     const val koin = "3.1.2"
-    const val kotest = "4.6.0"
+    const val kotest = "4.6.1"
     const val kotestArrowAssertions = "4.4.3"
     const val kotlinLogging = "2.0.8"
     const val ktor = "1.6.0"
