@@ -8,16 +8,15 @@ object Dependencies {
 
     object Arrow {
         internal val groupId = "io.arrow-kt"
-        private fun artifact(artifactId: String, version: String = Versions.arrow) = "$groupId:$artifactId:$version"
-        val core = artifact("arrow-core")
-        val optics = artifact("arrow-optics")
-        val syntax = artifact("arrow-syntax", Versions.arrowSecondary)
-        val fx = artifact("arrow-fx", Versions.arrowSecondary)
-        val annotations = artifact("arrow-annotations", Versions.arrowSecondary)
-        val fxCoroutines = artifact("arrow-fx-coroutines")
-
+        private fun artifact(artifactId: String) = "$groupId:arrow-$artifactId:${Versions.arrow}"
+        val core = artifact("core")
+        val optics = artifact("optics")
+        val syntax = artifact("syntax")
+        val fx = artifact("fx")
+        val annotations = artifact("annotations")
+        val fxCoroutines = artifact("fx-coroutines")
         /** use with kapt(), rather implementation(); requires kapt plugin applied */
-        val meta = artifact("arrow-meta")
+        val meta = artifact("meta")
     }
 
     object Koin {

@@ -11,7 +11,7 @@ fun doSomething(asyncExecutor: (() -> Unit) -> Unit) {
     }
 }
 
-@OptIn(DelicateCoroutinesApi::class)
+@DelicateCoroutinesApi
 fun runAsync(block: () -> Unit) {
     println("going to run async.")
     GlobalScope.launch {
@@ -19,6 +19,7 @@ fun runAsync(block: () -> Unit) {
     }
 }
 
+@DelicateCoroutinesApi
 fun main() {
     doSomething(::runAsync)
 }

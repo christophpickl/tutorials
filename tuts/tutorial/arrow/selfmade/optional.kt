@@ -2,7 +2,6 @@ package tutorial.arrow.selfmade
 
 import io.kotest.core.spec.style.StringSpec
 
-
 sealed class Option<ElementType> {
     fun <NewType> map(transformer: (ElementType) -> NewType): Option<NewType> = when (this) {
         is None -> None()
