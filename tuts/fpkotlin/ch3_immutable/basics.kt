@@ -20,17 +20,27 @@ const val ... compile time constant (of limited use; e.g. primitive types and st
 /*
 advantages:
 - thread safety
-    * TODO
+    * as there is no mutable state, threads can't interfer with each other, no race conditions
 - low coupling
-    * TODO
+    * coupling also happens via interacting through mutable state, without it, less coupling
 - referential transparency:
     * expressions always evaluate to the same value -irrespective of context/any other variance.
     * any expression can be replaced by its evaluated value.
 - failure atomicity:
-    * Failure in one thread/module/part has no effect on other parts, thus can not spread.
-    * Internal application state will always be consistent, due to decoupling due to immutability.
+    * failure in one thread/module/part has no effect on other parts, thus can not spread.
+    * internal application state will always be consistent, due to decoupling due to immutability.
 - compiler optimization
-    * TODO
+    * instead of the developer having to do it, the compiler can extensively do optimizations (e.g. compile time constants)
 - pure functions:
-    * TODO
+    * two requirements: 1) same result on same arguments 2) no side effects.
+    * it's complimentary to immutability.
+    * it's basically identical to a mathemtical understanding of a function.
+- caching:
+    * as a consequence of the points given above, caching is safe to do and improves overall performance
+*/
+/*
+disadvantages:
+- bigger memory footprint, especially when working with bigger datasets (need to copy them).
+- difficult to wrap head around the mathematical approach.
+- not very common still (FP is around for some decades) and all its consequences such as availability of libraries, tooling, documentation, devs...
 */

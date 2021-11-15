@@ -2,6 +2,7 @@ package com.github.cpickl.tutorials
 
 object Versions {
     const val arrow = "1.0.1"
+    const val arrow2 = "0.12.1"
     const val koin = "3.1.2"
     const val kotest = "4.6.1"
     const val kotestArrowAssertions = "4.4.3"

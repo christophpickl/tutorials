@@ -8,10 +8,10 @@ object Dependencies {
 
     object Arrow {
         internal val groupId = "io.arrow-kt"
-        private fun artifact(artifactId: String) = "$groupId:arrow-$artifactId:${Versions.arrow}"
+        private fun artifact(artifactId: String, version: String = Versions.arrow) = "$groupId:arrow-$artifactId:$version"
         val core = artifact("core")
         val optics = artifact("optics")
-        val syntax = artifact("syntax")
+        val syntax = artifact("syntax", Versions.arrow2)
         val fx = artifact("fx")
         val annotations = artifact("annotations")
         val fxCoroutines = artifact("fx-coroutines")
