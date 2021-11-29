@@ -12,7 +12,7 @@ object Dependencies {
         val core = artifact("core")
         val optics = artifact("optics")
         val syntax = artifact("syntax", Versions.arrow2)
-        val fx = artifact("fx")
+        val fx = artifact("fx", Versions.arrow2)
         val annotations = artifact("annotations")
         val fxCoroutines = artifact("fx-coroutines")
         /** use with kapt(), rather implementation(); requires kapt plugin applied */

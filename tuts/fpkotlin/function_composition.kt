@@ -1,7 +1,5 @@
 package fpkotlin
 
-import arrow.core.compose
-
 // https://www.raywenderlich.com/9527-functional-programming-with-kotlin-and-arrow-getting-started
 
 data class Book(
@@ -19,7 +17,7 @@ fun main() {
     val formattedPrice = (getPrice andThen formatPrice)(Book(42))
     println(formattedPrice)
 
-    // with arrow:
-    val formattedPrice2 = (formatPrice compose getPrice)(Book(42))
-    println(formattedPrice2)
+//    // with arrow:
+//    val formattedPrice2 = (formatPrice compose getPrice)(Book(42))
+//    println(formattedPrice2)
 }
