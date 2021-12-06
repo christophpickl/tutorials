@@ -1,7 +1,7 @@
 package tutorial.kotest
 
-import io.kotest.core.datatest.forAll
 import io.kotest.core.spec.style.DescribeSpec
+import io.kotest.data.forAll
 import io.kotest.data.row
 import io.kotest.matchers.shouldBe
 
@@ -13,7 +13,7 @@ class ParametrizedTest : DescribeSpec() {
             forAll(
                 row(1, "1"),
                 row(2, "2"),
-            ) { (nr: Int, expected: String) ->
+            ) { nr: Int, expected: String ->
                 println("nr: $nr")
                 nr.toString() shouldBe expected
             }

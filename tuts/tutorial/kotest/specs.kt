@@ -1,17 +1,11 @@
 package tutorial.kotest
 
-import io.kotest.assertions.arrow.validation.shouldBeValid
-import io.kotest.core.script.context
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.core.spec.style.describeSpec
-import io.kotest.data.blocking.forAll
-import io.kotest.data.row
 import io.kotest.matchers.ints.shouldNotBeZero
-import io.kotest.matchers.shouldBe
-
 
 class StringSimpleTest : StringSpec({
     fun fooBar() {}

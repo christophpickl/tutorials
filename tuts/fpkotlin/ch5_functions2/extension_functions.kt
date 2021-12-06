@@ -68,7 +68,7 @@ class Clashing {
     private fun privateFun() = "private class"
 }
 
-fun Clashing.publicFun() = "public extension" // only warning, class method will have precedence
+fun Clashing.publicFun() = "public extension" // only warning, class method will have precedence!
 fun Clashing.privateFun() = "private extension" // private method will not be used, instead this one here
 fun Clashing.publicFun(overloaded: Any) = "public overloaded extension"
 

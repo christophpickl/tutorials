@@ -1,5 +1,7 @@
 package fpkotlin.ch5_functions2
 
+import arrow.core.Either
+import arrow.core.right
 import tutorial.kotest.T
 
 /*
@@ -52,3 +54,102 @@ fun `named lambda arguments`(f: (i: Int, s: String) -> Unit) { // for documentat
     // f(i = 1, s = "a") ... not allowed!
     f(1, "a")
 }
+
+// ================================================================================================
+
+class Super {
+    companion object
+    object Sub
+}
+
+fun Super.Companion.foo() {}
+fun Super.Sub.bar() {}
+
+infix fun Int.`+++`(other: Int) = this + (other * 3)
+fun usage() {
+    2 `+++` 3 // = 2 + (3 * 3) == 11
+}
+
+// chaining infix functions :)
+
+object All {
+    infix fun your(base: Pair<Base, Us>) {}
+}
+object Base {
+    infix fun are(belong: Belong) = this
+}
+object Belong
+object Us
+fun usageInfix() {
+    All your (Base are Belong to Us)
+}
+
+// ================================================================================================
+// operators
+
+class Op {
+    companion object {
+        operator fun invoke(pseudoSecondaryConstructor: Any): Either<Error, Op> {
+            // in case you need some validation (could make the real constructor private ;)
+            return Op().right()
+        }
+    }
+    operator fun invoke() {}
+    operator fun get(indexAccess: String) = "looked up value"
+    operator fun set(indexAccess: String, value: String) {}
+    operator fun get(indexAccess: String, other: Int) = "looked up value 2"
+    operator fun set(indexAccess: String, other: Int, value: String) {}
+
+    fun demo() {
+        val op = Op()
+        op() // directly invoke (without specifying name)
+
+        val func = object : Function0<Any> {
+            override fun invoke(): Any = 1
+        }
+        func() // same for functional interfaces (like SAMs)
+
+        op["key"] // operator get
+        op["write"] = "value" // operator set
+        op["key", 42] // multi-arg index access
+        op["key", 42] = "value" // multi-arg set
+    }
+}
+
+// Op() + Op()
+operator fun Op.plus(other: Op) = Op()
+// Op() - Op()
+operator fun Op.minus(other: Op) = Op()
+// Op() * Op()
+operator fun Op.times(other: Op) = Op()
+// Op() / Op()
+operator fun Op.div(other: Op) = Op()
+// Op() % Op()
+operator fun Op.rem(other: Op) = Op()
+// Op()..Op()
+operator fun Op.rangeTo(other: Op) = Op()
+// Op() in Op()
+operator fun Op.contains(other: Op) = true
+// Op() += Op()
+operator fun Op.plusAssign(other: Op) {}
+// Op() -= Op()
+operator fun Op.minusAssign(other: Op) {}
+// Op() *= Op()
+operator fun Op.timesAssign(other: Op) {}
+// Op() /= Op()
+operator fun Op.divAssign(other: Op) {}
+// Op() %= Op()
+operator fun Op.remAssign(other: Op) {}
+// Op() < Op()
+operator fun Op.compareTo(other: Op) = 0
+
+// !Op()
+operator fun Op.not() = 1
+// +Op()
+operator fun Op.unaryPlus() = 1
+// -Op()
+operator fun Op.unaryMinus() = 1
+// ++Op() or Op()++
+operator fun Op.inc() = Op()
+// --Op() or Op()--
+operator fun Op.dec() = Op()

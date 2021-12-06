@@ -1,6 +1,7 @@
 import com.github.cpickl.tutorials.Dependencies
 import com.github.cpickl.tutorials.IntegrationTestTask
 import com.github.cpickl.tutorials.excludeArrow
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 
 repositories {
     mavenCentral()
@@ -18,10 +19,10 @@ plugins {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
     implementation(kotlin("reflect"))
-    implementation(Dependencies.logback)
-    implementation(Dependencies.kotlinLogging)
-    implementation(Dependencies.Arrow.core)
-    implementation(Dependencies.Arrow.optics)
+    implementation(com.github.cpickl.tutorials.Dependencies.logback)
+    implementation(com.github.cpickl.tutorials.Dependencies.kotlinLogging)
+    implementation(com.github.cpickl.tutorials.Dependencies.Arrow.core)
+    implementation(com.github.cpickl.tutorials.Dependencies.Arrow.optics)
     implementation(Dependencies.Arrow.syntax)
     implementation(Dependencies.Arrow.fx)
     implementation(Dependencies.Arrow.annotations)
@@ -67,3 +68,11 @@ tasks.register<IntegrationTestTask>("itest") {
 }
 
 //the<IntegrationTestTask>().tagExpression.set("Unit & Database & !Linux")
+
+tasks.withType<DependencyUpdatesTask> {
+    val rejectPatterns = listOf("alpha", "beta", "EAP", "RC", "m").map { it.toLowerCase() }
+    rejectVersionIf {
+        val version = candidate.version.toLowerCase()
+        rejectPatterns.any { version.contains(it) }
+    }
+}

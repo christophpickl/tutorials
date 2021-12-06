@@ -13,7 +13,7 @@
 * Go to `/etc/apache2/users` and edit the `<USERNAME>.conf` file and modify this one:
 
 ```
-<Directory "/Users/developer/Sites/">
+<Directory "/Users/<USERNAME>/Sites/">
         Options Indexes MultiViews
         Require all granted
 </Directory>
@@ -39,7 +39,7 @@ to:
 * edit `/etc/apache2/httpd.conf`
 	* uncomment (line 113): `#LoadModule include_module libexec/apache2/mod_include.so`
 	* uncomment (line 186,187): `#LoadModule rewrite_module libexec/apache2/mod_rewrite.so` and `#LoadModule php7_module libexec/apache2/libphp7.so`
-	* uncomment (line 523): `#Include /private/etc/apache2/extra/httpd-userdir.conf`
+	* uncomment (line 521): `#Include /private/etc/apache2/extra/httpd-userdir.conf`
 	* uncomment (line 555): `#Include /private/etc/apache2/other/*.conf`
 	* ensure these are also uncommented:
 
