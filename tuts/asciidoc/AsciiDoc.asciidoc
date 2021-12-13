@@ -1,0 +1,155 @@
+
+= AsciiDoc
+
+* https://asciidoctor.org/
+* source: https://github.com/asciidoctor/asciidoctor
+* review: https://www.slant.co/options/23065/~asciidoctor-review
+* learn:
+** !!! doc: https://docs.asciidoctor.org/asciidoc/latest/
+** syntax: https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/
+** guide: https://asciidoctor.org/docs/asciidoc-writers-guide/
+* userguide: https://asciidoc.org/userguide.html
+
+== github support
+
+* https://gist.github.com/dcode/0cfbf2699a1fe9b46ff04c41721dda74
+* file extension: adoc, ad, asciidoc
+* uses safe mode (Github Flavored Asciidoc)
+* only render when on github:
+
+```
+ifdef::env-github[]
+:imagesdir: foo/
+endif::[]
+```
+
+== Samples
+
+* escape with passthrough macros:
+
+[arabic]
+.. double dollar: `$ $_italic_$$` (wihtout the spaces)
+.. tripple plus:  `+ + +_italic_+++` (wihtout the spaces)
+.. pass: pass:[<q>To be or not to be</q>]
+*** pass:attributes,quotes[<u>the '{author}'</u>]
+* comments with: `//`
+
+=== Formatting
+
+[#id-formatting]
+* _italic_ by `$$_italic_$$`
+* *bold* by `$$*bold*$$`
+* `monospace` by `$$`monospace`$$`
+* #highlight# by `$$#highlight#$$`
+* hr break: ''' (three single quotes)
+
+'''
+
+* hard line breaks using `+` at the end of the line:
+
+```
+line one +
+second line
+```
+
+=== Structure
+
+==== simple lists
+
+unordered:
+
+* item A
+* item B
+
+ordered:
+
+. item A
+. item B
+
+ordered customized:
+
+[lowerroman,start=10]
+. `arabic`: 1. 2. 3.
+. `loweralpha`: a. b. c.
+. `lowerroman`: i. ii. iii.
+. `upperalpha`: A. B. C.
+. `upperroman`: I. II.
+III.
+
+break lists with `//-`:
+// asdf
+
+. list one
+. list one b
+
+//-
+
+. list two
+. list two b
+
+==== complex lists
+
+term 1::
+Some description.
+
+term 2::
+Some description.
+
+=== Styling
+
+How to use Q&A lists?::
+By using double colon.
+
+Custom styles, e.g. [red]#red font# via: `[red]#asdf #`
+
+NOTE: Here some note.
+
+.A formal example
+[example]
+It must *not* be interrupted by blank lines.
+
+.A multiline example
+====
+This one has lines.
+
+And breaks in between.
+====
+
+=== Images
+
+Simple:
+
+image::people/Freud-Sigmund.jpg[]
+
+More complex:
+[#img-id]
+.Some Image Caption
+[link=https://en.wikipedia.org/wiki/Sigmund_Freud]
+image::people/Freud-Sigmund.jpg[AltText,200,200]
+
+image::people/Freud-Sigmund.jpg[AltText,200,100]
+image::people/Freud-Sigmund.jpg[alt=AltText,width=200,height=100]
+
+* macro params are:
+. Alternate text
+. width
+. height (if this is not defined or doesn't respect the original ratio, it will be automatically scaled)
+
+=== Referencing
+
+==== Links
+
+link:https://www.foo.bar[Rendered Text]
+`$$link:https://www.foo.bar[Rendered Text]$$`
+
+==== Internal Xrefs
+
+* defining IDs via `[#myId]` above the element.
+* internal xrefs via double angled brackets `<<`.
+* See image above: `$$<<img-id>>$$`
+* Or use overwrite default ID caption: `$$<<id-formatting, custom caption>>$$`
+* For cross-site refs do a: `$$<</path/to#id-me, label>>$$`
+
+=== Misc
+
+* footnote by `$$footnote:[text]$$`: footnote:[text]
